@@ -3,23 +3,27 @@
         <h1 class="title">Log out</h1>
     </ion-header-bar>
     <ion-content>
-		  <div class="card list list-inset" style="box-shadow:0 1px 3px rgba(0, 0, 0, 0.25);">
-    		<div class="item">
-      			<h2>Username</h2>
-      			<p>{{username}}</p>
-    		</div>
-    		<div class="item">
-      			<h2>Created at</h2>
-      			<p>{{timestamp | amDateFormat:'dddd, YYYY-MM-DD, h:mm:ss a'}}</p>
-    		</div>
-        <div class="item">
-            <h2>Email Address</h2>
-            <p>{{email}}</p>
-        </div>
-    		<div class="item">
-      			<h2>App Version</h2>
-      			<p>V1.0.0</p>
-    		</div>
+		  <div class="card list" style="box-shadow:0 1px 3px rgba(0, 0, 0, 0.25);">
+        <a class="item item-icon-left">
+          <i class="icon ion-android-contact"></i>
+          <h2>Username</h2>
+          <p>{{username}}</p>
+        </a>
+        <a class="item item-icon-left">
+          <i class="icon ion-ios-calendar-outline"></i>
+          <h2>Created at</h2>
+          <p>{{timestamp | amDateFormat:'dddd, YYYY-MM-DD, h:mm:ss a'}}</p>
+        </a>
+        <a class="item item-icon-left">
+          <i class="icon ion-ios-email-outline"></i>
+          <h2>Email Address</h2>
+          <p>{{email}}</p>
+        </a>
+        <a class="item item-icon-left">
+          <i class="icon ion-ios-gear-outline"></i>
+          <h2>App Version</h2>
+          <p>V1.0.0</p>
+        </a>
 		  </div>
       <div class="list list-inset">
         <button ng-click="logout()" class="button button-block button-royal" style="border-color:#8a6de9;">
