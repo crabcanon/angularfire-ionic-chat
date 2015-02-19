@@ -1,0 +1,26 @@
+<ion-view view-title="Login">
+    <ion-header-bar class="bar bar-header bar-royal">
+        <h1 class="title">Log In</h1>
+        <button class="button button-clear" ng-click="back()" style="font-weight:400;">Go Back</button>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="list card" style="box-shadow:0 1px 3px rgba(0, 0, 0, 0.25);">
+            <label class="item item-input" style="border-color: #8a6de9;">
+                <span class="input-label royal">Email</span>
+                <input type="text" ng-model="user.email">
+            </label>
+            <label class="item item-input" style="border-color: #8a6de9;">
+                <span class="input-label royal">Password</span>
+                <input type="password" ng-model="user.pwdForLogin">
+            </label>
+        </div>
+        <div class="list" style="text-align:center;">
+            <button ng-click="signIn(user)" class="button button-block button-royal" style="border-color:#8a6de9; margin-bottom:0px; margin-bottom:20px;">
+                Sign In
+            </button>
+            <button ng-click="modal.show()" class="button button-small button-outline icon-left ion-person-add button-royal">
+                Create New Account
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

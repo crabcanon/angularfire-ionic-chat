@@ -1,0 +1,49 @@
+<ion-view view-title="">
+    <ion-header-bar class="bar bar-header bar-royal">
+        <h1 class="title">Chat with {{ peopleName }}</h1>
+        <a ng-href="#/main/people" class="button button-clear button-outline" style="font-weight:400;">
+        Go Back
+        </a>
+    </ion-header-bar>
+    <ion-content>
+        <ion-list ng-show="peopleName">
+            <ion-item class="item item-input-inset">
+                <label class="item-input-wrapper">
+                    <input type="text" ng-model="IM.textMessage" style="height:31px;" placeholder="Type in your message...">
+                </label>
+                <button ng-click="sendMessage(IM.textMessage)" style="width: 20%; border-color:#66cc33;" class="button button-small button-balanced">
+                    Send
+                </button>
+            </ion-item>
+            <ion-item ng-if="peoplechats.length == 0" class="textCenter">
+                <p>No messages in this room. Send message to start.</p>
+            </ion-item>
+            <ion-item class="chat-content" ng-repeat="chat in peoplechats | orderBy:'createdAt':true" type="item-text-wrap">
+                <div class="row">
+                    <div class="col col-50">
+                        <h3>{{chat.from}}:</h3>
+                    </div>
+                    <div class="col col-50">
+                        <h3 am-time-ago="chat.createdAt" class="item-note"></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-100" style="text-align:justify;">
+                        <p class="item-text-wrap">{{chat.message}}</p>
+                    </div>
+                </div>
+                <ion-option-button class="button-assertive" ng-click="remove(chat)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
+            <!-- <ion-item ng-hide="peoplechats" class="textCenter">
+                <i class="icon ion-loading-c"></i> Loading Chats
+            </ion-item> -->
+        </ion-list>
+        <ion-list ng-hide="peopleName">
+            <ion-item class="textCenter">
+                <p>Please select a people to chat first.</p>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,51 @@
+h1, h2, h3, h4, h5, h6, div, p, button, a, span{
+  font-family: "brandon-grotesque",sans-serif;
+  font-weight: 400;
+}
+
+.spinner{
+  stroke: #ef4e3a;
+  fill: #ef4e3a;
+}
+.spinner svg{
+  width: 150px;
+  height: 150px;
+}
+
+.slider {
+  height: 100%;
+}
+.slider-slide {
+  padding-top: 80px;
+  color: #000;
+  background-color: #fff;
+  text-align: center;
+
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+}
+
+.slider-pager>span>i{
+  color:#8a6de9;
+}
+
+#logo {
+  margin: 30px 0px;
+}
+
+#list {
+  width: 170px;
+  margin: 30px auto;
+  font-size: 20px;
+}
+#list ol {
+  margin-top: 30px;
+}
+#list ol li {
+  text-align: left;
+  list-style: decimal;
+  margin: 10px 0px;
+}
+.chat-content>.item-content{
+  padding:10px !important;
+}

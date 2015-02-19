@@ -1,0 +1,99 @@
+<ion-view title="">
+  <ion-nav-buttons side="left">
+    <button class="button button-royal button-clear no-animation"
+      ng-click="startApp()" ng-if="!slideIndex" style="font-weight:400;">
+      Skip Intro
+    </button>
+    <button class="button button-royal button-clear no-animation"
+      ng-click="previous()" ng-if="slideIndex > 0" style="font-weight:400;">
+      Previous
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="right"> 
+    <button class="button button-royal button-clear no-animation"
+      ng-click="next()" ng-if="slideIndex != 1" style="font-weight:400;">
+      Next
+    </button>
+    <button class="button button-royal button-clear no-animation"
+      ng-click="startApp()" ng-if="slideIndex == 1" style="font-weight:400;">
+      Start
+    </button>
+  </ion-nav-buttons>
+
+  <ion-slide-box on-slide-changed="slideChanged(index)">
+    <ion-slide class="assertive" style="margin-top:2%;">
+      <h3 class="royal" style="font-weight:700; font-size:28px;">Matsit Chat Channel</h3>
+      <div id="logo">
+        <ion-spinner icon="ripple" class="spinner spinner-ripple"><svg viewBox="0 0 64 64"><g fill="none" fill-rule="evenodd" stroke-width="3"><circle cx="32" cy="32" r="12.3784"><animate attributeName="r" begin="0s" dur="2s" values="0;24" keyTimes="0;1" keySplines="0.1,0.2,0.3,1" calcMode="spline" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" begin="0s" dur="2s" values=".2;1;.2;0" repeatCount="indefinite"></animate></circle><circle cx="32" cy="32" r="22.9914"><animate attributeName="r" begin="-1s" dur="2s" values="0;24" keyTimes="0;1" keySplines="0.1,0.2,0.3,1" calcMode="spline" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" begin="-1s" dur="2s" values=".2;1;.2;0" repeatCount="indefinite"></animate></circle></g></svg></ion-spinner>
+      </div><br>
+      <h4 class="royal">A real-time chat channel</h4>
+      <p class="royal">2014 - 2015 Matsit Inc.</p>
+      
+    </ion-slide>
+
+    <ion-slide style="margin-top:2%;">
+      <h3 class="royal" style="font-size:20px; border:1px solid #8a6de9; padding:5px; width:40%; margin-left: auto; margin-right:auto;">Powered by</h3><br>
+      <div class="row" style="width:80%; margin-left:auto; margin-right:auto;">
+        <div class="col col-25">
+          <i class="icon ion-social-angular-outline assertive" style="font-size:36px;"></i>
+        </div>
+        <div class="col col-25">
+          <i class="icon ion-social-sass assertive" style="font-size:36px;"></i>          
+        </div>
+        <div class="col col-25">
+          <i class="icon ion-ios-ionic-outline assertive" style="font-size:36px;"></i>
+        </div>
+        <div class="col col-25">
+          <i class="icon ion-social-buffer-outline assertive" style="font-size:36px;"></i>
+        </div>
+      </div>
+      <div class="row" style="width:80%; margin-left:auto; margin-right:auto;">
+        <div class="col col-25">
+          <p class="assertive">Angular</p>
+        </div>
+        <div class="col col-25">
+          <p class="assertive">Sass</p>
+        </div>
+        <div class="col col-25">
+          <p class="assertive">Ionic</p>
+        </div>
+        <div class="col col-25">
+          <p class="assertive">Firebase</p>
+        </div>
+      </div>
+      <br>
+      <h3 class="royal" style="font-size:20px; border:1px solid #8a6de9; padding:5px; width:40%; margin-left: auto; margin-right:auto;">Platforms</h3><br>
+      <div class="row" style="width:80%; margin-left:auto; margin-right:auto;">
+        <div class="col col-25">
+          <i class="icon ion-social-html5-outline assertive" style="font-size:36px;"></i>
+        </div>
+        <div class="col col-25">
+          <i class="icon ion-social-apple-outline assertive" style="font-size:36px;"></i>
+        </div>
+        <div class="col col-25">
+          <i class="icon ion-social-android-outline assertive" style="font-size:36px;"></i>
+        </div>
+        <div class="col col-25">
+          <i class="icon ion-social-windows-outline assertive" style="font-size:36px;"></i>
+        </div>
+      </div>
+      <div class="row" style="width:80%; margin-left:auto; margin-right:auto;">
+        <div class="col col-25">
+          <p class="assertive">HTML 5</p>
+        </div>
+        <div class="col col-25">
+          <p class="assertive">iOS</p>
+        </div>
+        <div class="col col-25">
+          <p class="assertive">Android</p>
+        </div>
+        <div class="col col-25">
+          <p class="assertive">WP8</p>
+        </div>
+      </div>
+    </ion-slide>
+
+  </ion-slide-box>
+
+</ion-view>
