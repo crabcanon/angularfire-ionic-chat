@@ -38,7 +38,8 @@ angular.module('matsitchat', ['ionic','angularMoment', 'config', 'matsitchat.con
     $rootScope.person = {
       createdAt: 1424187838968,
       displayName: "You",
-      email: "abc@abc.com"
+      email: "abc@abc.com",
+      uid: "abc"
     };
 
     Auth.$onAuth(function (authData){
@@ -131,6 +132,15 @@ angular.module('matsitchat', ['ionic','angularMoment', 'config', 'matsitchat.con
       }
     }
   })
+  // .state('main.peoplechatlist', {
+  //   url: '/people/:currentUserID',
+  //   views: {
+  //     'people-tab': {
+  //       templateUrl: 'templates/main.people.list.html',
+  //       controller: 'PeopleChatListCtrl'
+  //     }
+  //   }
+  // })
   .state('main.peoplechat', {
     url: '/people/:peopleID',
     views: {

@@ -78,14 +78,17 @@ angular.module('matsitchat.controllers', [])
         console.log('Logged in as: ' + authData.uid);
         ref.child('users').child(authData.uid).once('value', function (dataSnapshot){
           var val = dataSnapshot.val();
-          $rootScope.person = val;
+          $rootScope.person.createdAt = val.createdAt;
+          $rootScope.person.displayName = val.displayName;
+          $rootScope.person.email = val.email;
+          $rootScope.person.uid = authData.uid;
           // $scope.$apply(function(){
           //   $rootScope.person = val;
           // });
         });
         console.log('$rootScope.person: ', $rootScope.person);
         $ionicLoading.hide();
-        $state.go('main.chat');
+        $state.go('main.people');
       }).catch(function (error) {
         alert('Authentication failed: ' + error.message);
         $ionicLoading.hide();
@@ -190,7 +193,25 @@ angular.module('matsitchat.controllers', [])
 
 .controller('PeopleCtrl', ['$scope', 'People', '$state', function ($scope, People, $state) {
   
-  $scope.contacts = People.all();
+  $scope.contactsAll = People.all();
+  $scope.currentID = $scope.person.uid;
+  $scope.contacts = [];
+
+  for (var i = $scope.contactsAll.length - 1; i >= 0; i--) {
+    if($scope.contactsAll[i].$id != $scope.person.uid){
+      $scope.contacts.push($scope.contactsAll[i]);
+    }else{
+      $scope.currentUser = $scope.contactsAll[i];
+    }
+  };
+
+  console.log('$scope.currentUser: ', $scope.currentUser);
+
+  $scope.openChatPeopleList = function(currentUserID){
+    $state.go('main.peoplechatlist', {
+      currentUserID: currentUserID
+    });
+  };
 
   $scope.openChatPeople = function (peopleID) {
     $state.go('main.peoplechat', {
@@ -210,7 +231,7 @@ angular.module('matsitchat.controllers', [])
     textMessage: ""
   };
   console.log($state.params);
-  PeopleChat.selectPeople($state.params.peopleID);
+  PeopleChat.selectPeople($state.params.peopleID, $scope.person.uid);
   var peopleName = PeopleChat.getSelectedPeopleName();
   if (peopleName) {
     $scope.peopleName = " - " + peopleName;

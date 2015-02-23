@@ -150,8 +150,10 @@ angular.module('matsitchat.services', ['firebase'])
 .factory('PeopleChat', ['$firebase', 'People', function ($firebase, People) {
 	
 	var selectedPeopleID;
+	var invitedPeopleID;
 	var ref = new Firebase(firebaseUrl);
 	var peoplechats;
+	var peoplechatsReverse;
 
 	return {
 		all: function() {
@@ -183,11 +185,13 @@ angular.module('matsitchat.services', ['firebase'])
 				return null;
 			}
 		},
-		selectPeople: function(peopleID) {
+		selectPeople: function(peopleID, currentID) {
 			console.log('Selecting the person with ID: ' + peopleID);
 			selectedPeopleID = peopleID;
-			if(peopleID){
-				peoplechats = $firebase(ref.child('users').child(selectedPeopleID).child('peoplechats')).$asArray();
+			invitedPeopleID = currentID;
+			if(peopleID && currentID){
+				peoplechats = $firebase(ref.child('users').child(selectedPeopleID).child('peoplechats').child(invitedPeopleID)).$asArray();
+				peoplechatsReverse = $firebase(ref.child('users').child(invitedPeopleID).child('peoplechats').child(selectedPeopleID)).$asArray();
 			}
 		},
 		send: function(from, message) {
@@ -198,7 +202,15 @@ angular.module('matsitchat.services', ['firebase'])
 					message: message,
 					createdAt: Firebase.ServerValue.TIMESTAMP
 				};
+				// var peoplechatMessageReverse = {
+				// 	from: fromReverse,
+				// 	message: message,
+				// 	createdAt: Firebase.ServerValue.TIMESTAMP  
+				// };
 				peoplechats.$add(peoplechatMessage).then(function (data) {
+					console.log('Message added: ' + data);
+				});
+				peoplechatsReverse.$add(peoplechatMessage).then(function (data) {
 					console.log('Message added: ' + data);
 				});
 			}

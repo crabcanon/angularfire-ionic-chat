@@ -1,20 +1,55 @@
 <ion-view view-title="Contacts">
 	<ion-header-bar class="bar bar-header bar-royal">
-        <h1 class="title">Contacts</h1>
+        <h1 class="title">Chat With Your Contacts</h1>
     </ion-header-bar>
 	<ion-content>
     <!-- <ion-refresher pulling-text="Pull To Refresh" on-refresh="doRefreshPeople()" refreshing-icon="ion-loading-c"></ion-refresher>  -->
-		<div class="list card" ng-show="contacts">
-    		<a class="item item-icon-left" ng-repeat="contact in contacts" ng-click="openChatPeople(contact.$id)">
-      			<i class="icon ion-social-reddit-outline"></i>
-      			<h2>{{contact.displayName}}</h2>
-      			<p>{{contact.email}}</p>
-    		</a>
-		</div>
-    <ion-list ng-if="contacts.length == 0">
+    <div class="list card" style="box-shadow:0 0px 0px rgba(0, 0, 0, 0);">
+      <a class="item">
+        <div class="row" style="padding:0px;">
+          <div class="col col-100">
+            <h2 style="">{{currentUser.displayName}} - Your Account</h2>
+          </div>
+        </div>
+        <div class="row" style="padding:0px;">
+          <div class="col col-75">
+            <p style="">{{currentUser.email}}</p>
+          </div>          
+          <div class="col col-25">
+            <p style="float:right;">{{currentUser.createdAt |  amDateFormat:'YYYY-MM-DD'}}</p>
+          </div>          
+        </div>
+      </a>
+      <!-- <a class="item item-text-wrap">
+        <div class="row" style="padding:0px;">
+          <div class="col col-100">
+            <h2 style="text-align: justify;">Tips: Start new chats by clicking items below! If the list is not loaded, please click other tabs and then go back to this tab again.</h2>
+          </div>
+        </div>
+      </a> -->
+    </div>
+		<div class="list card" ng-show="contacts" style="box-shadow:0 1px 3px rgba(0, 0, 0, 0.25);">
+      <a class="item item-icon-left" ng-click="openChatPeople(contact.$id)" ng-repeat="contact in contacts">
+        <i class="icon ion-social-reddit-outline"></i>
+        <div class="row" style="padding:0px;">
+          <div class="col col-100">
+            <h2>{{contact.displayName}}</h2>
+          </div>
+        </div>
+        <div class="row" style="padding:0px;">
+          <div class="col col-75">
+            <p>{{contact.email}}</p>
+          </div>          
+          <div class="col col-25">
+            <p style="float:right;">{{contact.createdAt |  amDateFormat:'YYYY-MM-DD'}}</p>
+          </div>          
+        </div>
+      </a>
+    </div>
+    <div class="list card" ng-if="contacts.length == 0" style="box-shadow:0 1px 3px rgba(0, 0, 0, 0.25);">
       <ion-item class="textCenter">
         <i class="icon ion-loading-c"></i> Loading your contacts...
       </ion-item>
-    </ion-list>
+    </div>
 	</ion-content>
 </ion-view>
