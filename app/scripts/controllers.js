@@ -78,10 +78,14 @@ angular.module('matsitchat.controllers', [])
         console.log('Logged in as: ' + authData.uid);
         ref.child('users').child(authData.uid).once('value', function (dataSnapshot){
           var val = dataSnapshot.val();
-          $rootScope.person.createdAt = val.createdAt;
-          $rootScope.person.displayName = val.displayName;
-          $rootScope.person.email = val.email;
-          $rootScope.person.uid = authData.uid;
+
+          $timeout(function(){
+            $rootScope.person.createdAt = val.createdAt;
+            $rootScope.person.displayName = val.displayName;
+            $rootScope.person.email = val.email;
+            $rootScope.person.uid = authData.uid;
+          },500);
+          
           // $scope.$apply(function(){
           //   $rootScope.person = val;
           // });
@@ -99,9 +103,7 @@ angular.module('matsitchat.controllers', [])
   };
 }])
 
-.controller('MainCtrl',['$scope', '$state', function($scope, $state) {
-  console.log('MainCtrl');
-  
+.controller('MainCtrl',['$scope', '$state', function($scope, $state) {  
   $scope.toIntro = function(){
     $state.go('intro');
   };
@@ -111,7 +113,11 @@ angular.module('matsitchat.controllers', [])
   $scope.IM = {
     textMessage: ''
   };
-  $scope.chats = Chats.all();
+
+  var chats = Chats.all();
+  chats.$loaded(function (data) {
+    $scope.chats = data;
+  });
 
   $scope.sendMessage = function(msg) {
     Chats.send($scope.person, msg);
@@ -146,7 +152,7 @@ angular.module('matsitchat.controllers', [])
           });
           Rooms.createRoom($scope.person, room.name, room.intro, room.icon);
           $ionicLoading.hide();
-          alert('User created successfully!');
+          alert('Room created successfully!');
           $scope.modal.hide();
         }, 1000);
       } else {
@@ -154,7 +160,10 @@ angular.module('matsitchat.controllers', [])
       }
     };
 
-    $scope.rooms = Rooms.all();
+    var rooms = Rooms.all();
+    rooms.$loaded(function (data) {
+      $scope.rooms = data;
+    });
 
     $scope.openChatRoom = function (roomID) {
         $state.go('main.roomchat', {
@@ -178,7 +187,10 @@ angular.module('matsitchat.controllers', [])
   var roomName = RoomChats.getSelectedRoomName();
   if (roomName) {
     $scope.roomName = " - " + roomName;
-    $scope.roomchats = RoomChats.all();
+    var roomchats = RoomChats.all();
+    roomchats.$loaded(function (data) {
+      $scope.roomchats = data;
+    });
   };
 
   $scope.sendMessage = function (msg) {
@@ -193,19 +205,21 @@ angular.module('matsitchat.controllers', [])
 
 .controller('PeopleCtrl', ['$scope', 'People', '$state', function ($scope, People, $state) {
   
-  $scope.contactsAll = People.all();
-  $scope.currentID = $scope.person.uid;
-  $scope.contacts = [];
+  var contactsAll = People.all();
+  contactsAll.$loaded(function (data) {
+    $scope.contactsAll = data;
+    $scope.currentID = $scope.person.uid;
+    $scope.contacts = [];
 
-  for (var i = $scope.contactsAll.length - 1; i >= 0; i--) {
-    if($scope.contactsAll[i].$id != $scope.person.uid){
-      $scope.contacts.push($scope.contactsAll[i]);
-    }else{
-      $scope.currentUser = $scope.contactsAll[i];
-    }
-  };
+    for (var i = $scope.contactsAll.length - 1; i >= 0; i--) {
+      if($scope.contactsAll[i].$id != $scope.person.uid){
+        $scope.contacts.push($scope.contactsAll[i]);
+      }else if($scope.contactsAll[i].$id == $scope.person.uid){
+        $scope.currentUser = $scope.contactsAll[i];
+      }
+    };
+  });
 
-  console.log('$scope.currentUser: ', $scope.currentUser);
 
   $scope.openChatPeopleList = function(currentUserID){
     $state.go('main.peoplechatlist', {
@@ -235,7 +249,10 @@ angular.module('matsitchat.controllers', [])
   var peopleName = PeopleChat.getSelectedPeopleName();
   if (peopleName) {
     $scope.peopleName = " - " + peopleName;
-    $scope.peoplechats = PeopleChat.all();
+    var peoplechats = PeopleChat.all();
+    peoplechats.$loaded(function (data) {
+      $scope.peoplechats = data;
+    });
   };
 
   $scope.sendMessage = function (msg) {

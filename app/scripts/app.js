@@ -8,8 +8,10 @@ var firebaseUrl = "https://matsit.firebaseio.com/";
 function onDeviceReady() {
     angular.bootstrap(document, ["matsitchat"]);
 }
+
 //console.log("binding device ready");
 // Registering onDeviceReady callback with deviceready event
+
 document.addEventListener("deviceready", onDeviceReady, false);
 
 // 'matsitchat.services' is found in services.js
@@ -18,7 +20,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 // angular.module is a global place for creating, registering and retrieving Angular modules
 angular.module('matsitchat', ['ionic','angularMoment', 'config', 'matsitchat.controllers', 'firebase', 'matsitchat.services'])
 
-.run(function($ionicPlatform, $rootScope,$state, $location, Auth, $ionicLoading) {
+.run(function($ionicPlatform, $rootScope,$state, $location, Auth, $ionicLoading, $timeout) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -132,15 +134,6 @@ angular.module('matsitchat', ['ionic','angularMoment', 'config', 'matsitchat.con
       }
     }
   })
-  // .state('main.peoplechatlist', {
-  //   url: '/people/:currentUserID',
-  //   views: {
-  //     'people-tab': {
-  //       templateUrl: 'templates/main.people.list.html',
-  //       controller: 'PeopleChatListCtrl'
-  //     }
-  //   }
-  // })
   .state('main.peoplechat', {
     url: '/people/:peopleID',
     views: {
