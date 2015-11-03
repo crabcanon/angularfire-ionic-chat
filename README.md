@@ -1,4 +1,4 @@
-# AngularFire-Chat
+# AngularFire-Ionic-Chat
 
 * This project is a HTML5 hybrid mobile app for both mobile and web platforms and it's a real-time chat channel.
 * It's originally designed for testing the real-time feature of Firebase and the performance of Ionic on mobile plateforms.
