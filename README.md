@@ -26,6 +26,7 @@
 * Run `grunt serve` for preview
 * Run `grunt platform:add:ios` or `grunt platform:add:android` to add platforms
 * For more command lines, please check [here](https://github.com/diegonetto/generator-ionic)
+* If you want to configure your own firebase instance, you should go to app/scripts/app.js and edit the variable `firebaseUrl`. For example, `var firebaseUrl = "https://xxx.firebaseio.com/";`.
 
 ## TODO 
 
