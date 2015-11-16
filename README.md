@@ -1,8 +1,8 @@
 # AngularFire-Ionic-Chat
 
-* This project is a HTML5 hybrid mobile app for both mobile and web platforms and it's a real-time chat channel.
+* This project is a HTML5 hybrid mobile app of real-time chatting for both mobile and web platforms.
 * It's originally designed for testing the real-time feature of Firebase and the performance of Ionic on mobile plateforms.
-* [Live Demo](https://matsit.firebaseapp.com/) -- Please test it with your mobile devices or please activate the [Device Mode & Mobile Emulation](https://developer.chrome.com/devtools/docs/device-mode) if you want to test it on web browsers.
+* [Live Demo](https://matsit.firebaseapp.com/) -- Test it with your mobile devices or activate the [Device Mode & Mobile Emulation](https://developer.chrome.com/devtools/docs/device-mode) if you want to test it on web browsers.
 
 ## Tech-stack
 
