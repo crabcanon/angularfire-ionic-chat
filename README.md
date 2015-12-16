@@ -28,13 +28,13 @@
 * For more command lines, please check [here](https://github.com/diegonetto/generator-ionic)
 * If you want to configure your own firebase instance, you should go to app/scripts/app.js and edit the variable `firebaseUrl`. For example, `var firebaseUrl = "https://xxx.firebaseio.com/";`.
 
-## TODO 
+## Todo
 
-* Authenticate users with Facebook, Twitter, GitHub or Google
-* Find friends by their username or email or more methods
-* Invite people to a specific chat room
-* Notification for new messages
-* Support more data formats for sending messages, such as link, emoji, images etc.
+- [ ] Authenticate users with Facebook, Twitter, GitHub or Google
+- [ ] Find friends by their username or email or more methods
+- [ ] Invite people to a specific chat room
+- [ ] Notification for new messages
+- [ ] Support more data formats for sending messages, such as link, emoji, images etc.
 
 ## License
 
