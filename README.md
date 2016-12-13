@@ -39,3 +39,9 @@
 ## License
 
 [MIT License](https://opensource.org/licenses/MIT)
+
+---
+
+> [yehuang.me](https://yehuang.me) &nbsp;&middot;&nbsp;
+> GitHub [@crabcanon](https://github.com/crabcanon) &nbsp;&middot;&nbsp;
+> Gmail [@sysuhuangye](<mailto:sysuhuangye@gmail.com>)
